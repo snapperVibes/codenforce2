@@ -1,0 +1,29 @@
+# https://docs.docker.com/compose/django/
+version: "3.9"
+
+services:
+  db:
+    image: library/postgres:13
+    env_file:
+      - .env.dev
+    volumes:
+      - ./services/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - codenforce:/var/lib/postgresql/data
+
+
+
+  web:
+    build: services/web
+#    command: python manage.py runserver 0.0.0.0:8000
+    entrypoint: ["/code/boot.sh"]
+    env_file:
+      - .env.dev
+    volumes:
+    - ./services/web:/code
+    ports:
+    - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  codenforce:
