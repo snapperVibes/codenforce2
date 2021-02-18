@@ -14,12 +14,10 @@ services:
 
   web:
     build: services/web
-#    command: python manage.py runserver 0.0.0.0:8000
-    entrypoint: ["/code/boot.sh"]
     env_file:
       - .env.dev
     volumes:
-    - ./services/web:/code
+    - ./services/web/app:/app
     ports:
     - "8000:8000"
     depends_on:
