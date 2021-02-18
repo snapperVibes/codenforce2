@@ -10,14 +10,12 @@ services:
       - ./services/db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - codenforce:/var/lib/postgresql/data
 
-
-
   web:
     build: services/web
     env_file:
       - .env.dev
     volumes:
-    - ./services/web/app:/app
+    - ./services/web/:/app
     ports:
     - "8000:8000"
     depends_on:
