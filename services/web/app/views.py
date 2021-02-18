@@ -3,7 +3,9 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template.context import RequestContext
-from .forms import NameForm
+from .forms import NameForm, MunicipalityForm
+from .models import Municipality
+
 
 def index(request):
     # return HttpResponse("Hello, 🌍")
@@ -12,15 +14,25 @@ def index(request):
 
 class CEActionRequest:
 
+    # @staticmethod
+    # def select_municipality(request):
+    #     if request.method == "POST":
+    #         form = NameForm(request.POST)
+    #         if form.is_valid():
+    #             return HttpResponseRedirect('/thanks/')
+    #     else:
+    #         form = NameForm()
+    #         munis =  Municipality.objects.values("muniname", "municode")
+    #         [print(m) for m in munis]
+    #     return render(request, "public/services/CEAction/selectMunicipality.html", {'form': form} )
+
     @staticmethod
     def select_municipality(request):
         if request.method == "POST":
-            form = NameForm(request.POST)
+            form = MunicipalityForm(request.POST)
             if form.is_valid():
+                print("yay")
                 return HttpResponseRedirect('/thanks/')
         else:
-            form = NameForm()
-        return render(request, "public/services/CEAction/selectMunicipality.html", {'form': form} )
-
-# class TempMuni(forms.Form):
-#     # muni = forms.CharField(label="What muni?", widget=forms.Select(choices=["allegheny", "turtle creek", "cogland"]))
+            form = MunicipalityForm()
+        return render(request, "public/services/CEAction/selectMunicipality.html", {'form': form})
