@@ -1,9 +1,16 @@
-jinja2      # Template engine
-aiofiles    # Serves static files (async)
+jinja2           # Template engine
+aiofiles         # Serves static files (async)
+python-multipart # Allows FastAPI to use forms instead of JSON
+SQLAlchemy       # ORM (Object Relational Mapper)
+psycopg2         # Database driver for Postgres. TODO: Use async version
 ##############################################################################
 # Deployment
 # These packages are already bundled in the production Dockerfile,
 # but are necessary for development.
 fastapi
-uvicorn     # ASGI server implementation
-# gunicorn  # server, process manager.
+uvicorn   # ASGI server implementation
+#gunicorn # server, process manager.
+
+##############################################################################
+# Development Requirements
+pytest

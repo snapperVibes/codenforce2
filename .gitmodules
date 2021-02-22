@@ -1,0 +1,3 @@
+[submodule "services/web/codenforce/static/sources/pure"]
+	path = services/web/codenforce/static/sources/pure
+	url = https://github.com/pure-css/pure/

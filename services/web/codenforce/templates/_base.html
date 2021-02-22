@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{{ url_for('static', path='css/_pure_unminify.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='css/_temp.css') }}" rel="stylesheet">
+
+
+    <link href="{{ url_for('static', path='css/side_menu.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', path='js/side_menu.js')}}"}></script>
+
+
+    <title>codenforce</title>
+</head>
+<body>
+    <div id="layout">
+        {% include "_side_menu.html" %}
+
+        <div class="mainContainer" id="main">
+            {% block main%}
+            {% endblock %}
+        </div>
+    </div>
+
+
+</body>
+</html>
