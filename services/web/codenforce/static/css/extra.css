@@ -1,0 +1,34 @@
+.public-login-logo{
+    padding-bottom: 80px;
+    width: 9%;
+    min-width: 100px;
+    margin: 0 auto;
+
+}
+
+.publi-login-container{
+    margin: 0 auto;
+    width:550px;
+}
+
+.publi-login-title{
+    color: #2F2F2F;
+    letter-spacing: 3px;
+    padding-bottom: 30px;;
+    font-size: 2em;
+    width: 100%;
+    text-align: justify;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.public-login-button{
+    font-size: 1.3em;
+    width: 100%;
+    padding-top: 1em;
+}
+
+.public-login-text{
+    text-align: justify;
+    width: 100%;
+}

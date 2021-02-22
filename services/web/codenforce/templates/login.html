@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+{% block main %}
+
+<div class="content">
+    <img class="login-logo" src="{{ url_for('static', path='images/login.png') }}", alt="CodeNforce Logo" >
+    <h1 style>
+        HI, WELCOME TO <span style="color: #DEE461">CODE</span><span style="color:#00B4ED">NFORCE</span>!
+    </h1>
+    <button class="pure-button pure-button-primary">Login to mission control</button>
+    <span>
+        <br>TCVCOG staff, code enforcement officials, and other authorized users access tools via mission control
+    </span>
+</div>
+
+
+{% endblock %}
