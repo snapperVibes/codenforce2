@@ -1,4 +1,44 @@
 {% extends "_base.html" %}
 {% block main %}
+<div class="content">
+    <div class="header">
+        <h1>Report a New Concern</h1>
+    </div>
+    <span>Describe your concern with {{ parcel_data.propertyhousenum }} {{ parcel_data.propertyaddress }} in {{ parcel_data.munidesc.strip() }}.</span>
 
+    <form class="pure-form" action="/services/report_concern/photo?parcel={{ parcel }}" method="get">
+        <label for="issue">What is the concern with this property? Select one:</label>
+        <br>
+        <select name="issue" id="issue">
+            {% for issue in issues %}
+            <option value="{{ issue.typename }}">{{ issue.typename }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="description">Please describe the specifics of the concern.</label>
+        <!--        TODO: Make better shape-->
+        <br>
+        <input type="text" id="description" name="address">
+        <br><br>
+        <label for="date">What date did this incident occur? Select today's date if unknown.</label>
+        <br>
+        <input type="date" id="date" name="date">
+        <br><br>
+        <label for="urgent">Does this issue involve immediate human and/or safety hazards?</label>
+        <input type="checkbox" id="urgent" name="urgent">
+        <br><br>
+<!--        <label for="anonymous">Do you wish to file this claim anonymously?</label>-->
+<!--        <input type="checkbox" id="anonymous" name="anonymous">-->
+        <br>
+        <label for="parcel"></label>
+        <input id="parcel" name="parcel" value="{{ parcel_data.parid }}" type="hidden">
+        <button class="pure-button">Next step: Upload photos of your concern</button>
+
+
+    </form>
+    <br>
+
+
+
+</div>
 {% endblock %}

@@ -6,6 +6,9 @@ HERE = path.dirname(path.realpath(__file__))
 
 templates = Jinja2Templates(directory=path.join(HERE, "..", "templates"))
 
-__all__ = [
-    "templates",
-]
+import sys
+
+sys.path.append("..")
+import parse
+
+__all__ = ["templates", "parse"]

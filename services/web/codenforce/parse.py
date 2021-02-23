@@ -1,33 +1,47 @@
-# https://pe.usps.com/text/pub28/28apc_002.htm
+# # https://pe.usps.com/text/pub28/28apc_002.htm
+# from typing import Dict, Optional
+# from .db import table_mapper, Address
+#
+#
+# def address(address: str) -> Dict[str, Optional[str]]:
+#     result = table_mapper(Address)
+#     result["suffix_full"] = None
+#     address = address.upper()
+#     parts = address.split()
+#     parts[-1] = parts[-1].strip(".")
+#     if len(parts) == 1:
+#         result["street"] = parts[0]
+#     elif len(parts) >= 2:
+#         if parts[0].isnumeric():
+#             result["number"] = parts.pop(0)
+#
+#         if abbr := suffix_abbreviations.get(parts[-1], None):
+#             result["suffix_full"] = parts.pop(-1)
+#             result["suffix"] = abbr
+#         elif parts[-1] in suffix_abbreviations.values():
+#             result["suffix"] = parts.pop(-1)
+#
+#         if len(parts) >= 1:
+#             result["street"] = " ".join(parts)
+#
+#     return result
+#
+#
 from typing import Dict, Optional
 
 
 def address(address: str) -> Dict[str, Optional[str]]:
-    result = {
-        "number": None,
-        "street": None,
-        "suffix": None,
-        "suffix_full": None,
-    }
-
+    # TODO: THIS IS A DEMO VERSION THAT IS NOT PROUDCTION READY
+    # For example, it doesn't deal with fractions
+    result = {"housenumber": None, "address": None, "city": None, "zip": None}
     address = address.upper()
     parts = address.split()
-    parts[-1] = parts[-1].strip(".")
     if len(parts) == 1:
-        result["street"] = parts[0]
-    elif len(parts) >= 2:
+        result["address"] = parts[0]
+    else:
         if parts[0].isnumeric():
-            result["number"] = parts.pop(0)
-
-        if abbr := suffix_abbreviations.get(parts[-1], None):
-            result["suffix_full"] = parts.pop(-1)
-            result["suffix"] = abbr
-        elif parts[-1] in suffix_abbreviations.values():
-            result["suffix"] = parts.pop(-1)
-
-        if len(parts) >= 1:
-            result["street"] = " ".join(parts)
-
+            result["housenumber"] = parts.pop(0)
+        result["address"] = " ".join(parts)
     return result
 
 

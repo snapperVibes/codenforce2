@@ -1,8 +1,10 @@
-jinja2           # Template engine
-aiofiles         # Serves static files (async)
-python-multipart # Allows FastAPI to use forms instead of JSON
-SQLAlchemy       # ORM (Object Relational Mapper)
-psycopg2         # Database driver for Postgres. TODO: Use async version
+jinja2              # Template engine
+aiofiles            # Serves static files (async)
+python-multipart    # Allows FastAPI to use forms instead of JSON
+# SQLALchemy 1.4 is a transition release before 2.0.
+# Using 1.4 (and adhering to deprecation warnings) ensures a smooth transition to 2.0
+SQLAlchemy==1.4.0b3 # ORM (Object Relational Mapper)
+psycopg2            # Database driver for Postgres. TODO: Use async version
 ##############################################################################
 # Deployment
 # These packages are already bundled in the production Dockerfile,

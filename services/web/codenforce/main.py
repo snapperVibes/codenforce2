@@ -16,7 +16,7 @@ app = FastAPI()
 @app.on_event("startup")
 async def startup():
     # Connect to the database and at it to the app's shared state.
-    app.state.db = db.connect()
+    app.state.db = db.init_engine()
 
     # Include URL routes
     app.include_router(root.router)
@@ -25,11 +25,6 @@ async def startup():
     app.mount(
         "/static", StaticFiles(directory=os.path.join(HERE, "static")), name="static"
     )
-
-
-@app.on_event("shutdown")
-async def startup():
-    app.state.db.close()
 
 
 # For development
